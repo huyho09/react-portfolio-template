@@ -42,6 +42,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                       src={`/images/${
                         theme === "dark" ? "moon.svg" : "sun.svg"
                       }`}
+                      alt={theme === "dark" ? "Moon icon" : "Sun icon"} // Added alt text for accessibility
                     ></img>
                   </Button>
                 )}
@@ -58,6 +59,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         ? "cancel.svg"
                         : "cancel-white.svg"
                     }`}
+                     alt={!open ? "Open menu" : "Close menu"} // Added alt text for accessibility
                   ></img>
                 </Popover.Button>
               </div>
@@ -74,16 +76,16 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   {showBlog && (
                     <Button onClick={() => router.push("/blog")}>Blog</Button>
                   )}
+                  {/* CORRECTED SECTION FOR MOBILE RESUME LINK */}
                   {showResume && (
                     <Button
-                      onClick={() =>
-                        window.open("/resume")
-                        classes="first:ml-1"
-                      }
+                      onClick={() => router.push("/resume")} // Use router.push
+                      classes="first:ml-1"                 // 'classes' prop applied correctly
                     >
                       Resume
                     </Button>
                   )}
+                  {/* END CORRECTED SECTION */}
 
                   <Button
                     onClick={() => window.open("mailto:hello@chetanverma.com")}
@@ -121,7 +123,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
       </Popover>
       <div
         className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
+          theme === "light" ? "bg-white" : "" // Removed unnecessary && condition
         } dark:text-white top-0 z-10 tablet:flex`}
       >
         <h1
@@ -156,6 +158,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 <img
                   className="h-6"
                   src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  alt={theme === "dark" ? "Moon icon" : "Sun icon"} // Added alt text for accessibility
                 ></img>
               </Button>
             )}
@@ -186,6 +189,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 <img
                   className="h-6"
                   src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                   alt={theme === "dark" ? "Moon icon" : "Sun icon"} // Added alt text for accessibility
                 ></img>
               </Button>
             )}
